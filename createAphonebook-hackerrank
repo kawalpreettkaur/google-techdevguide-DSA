@@ -1,0 +1,33 @@
+# passed all 0,1,2,3 & 4 test cases
+
+entries = int(input())
+phonebook = {}
+
+for user_input in range(entries):
+    user_entry = input().split()
+    phonebook[user_entry[0]] = user_entry[1]
+    
+
+def query_lookup(query):
+    
+    if query in phonebook.keys():
+        return f'{query}={phonebook.get(query)}'
+        
+    # removed the below code to optimize the code as it was taking more than the expected time to run
+    
+    # for is_key,is_value in phonebook.items():
+    #     if is_key == query:
+    #         return f'{is_key}={is_value}'
+      
+    return "Not found"
+
+# unknown number of lines of queries. 
+# Each line (query) contains a  to look up, and you must continue reading lines until there is no more input.
+
+while True:
+    try: # earlier it was giving runtime error in testcase 0 since I assumed inputs == no of dictionary entries
+        query = input()
+        answer = query_lookup(query)
+        print(answer)
+    except EOFError:
+        break        
