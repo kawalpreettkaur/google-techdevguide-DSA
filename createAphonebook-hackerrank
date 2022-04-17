@@ -1,4 +1,5 @@
 # Python Day 08 - Create a Phonebook HackerRank Challenge
+# Challenge: https://www.hackerrank.com/challenges/30-dictionaries-and-maps/problem
 # passed all 0,1,2,3 & 4 test cases
 
 entries = int(input())
