@@ -1,0 +1,31 @@
+class Solution(object):
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+      
+        nums_length = len(nums) # length/size of given list of numbers
+        results = set() # stores unique quadruplets
+        
+        if nums_length < 4: # when given nums list carries less than 4 entries since we need to create a quadruplet
+            return [] # returns the empty list
+			
+        nums.sort() # sorts the nums list to handle repeated numbers in a list effectively
+
+        for pointerOne in range(nums_length-3):
+            for pointerTwo in range(pointerOne+1,nums_length-2):
+                
+                # using binary search technique
+                leftPlace = pointerTwo+1  # left place
+                rightPlace = nums_length-1 # right place
+
+                while rightPlace > leftPlace:
+                    
+                    current_sum = nums[pointerOne] + nums[pointerTwo] + nums[leftPlace] + nums[rightPlace]
+                    
+                    if current_sum == target:
+                        results.add((nums[pointerOne],nums[pointerTwo],nums[leftPlace], nums[rightPlace]))
+
+                    if current_sum > target:
+                        rightPlace -= 1
+                    else:
+                        leftPlace += 1
+        
+        return results
